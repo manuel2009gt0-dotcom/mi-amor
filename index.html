@@ -378,7 +378,7 @@
             transform: scale(1.05);
         }
 
-        /* Sección Galería - Actualizada con tus fotos */
+        /* Sección Galería - Actualizada con todas tus fotos */
         .gallery {
             background-color: var(--beige);
         }
@@ -431,7 +431,7 @@
             transform: translateY(0);
         }
 
-        /* Sección Mensaje - Actualizada con carrusel de fotos */
+        /* Sección Mensaje - Actualizada con más fotos en el carrusel */
         .message-section {
             background: linear-gradient(135deg, var(--cream) 0%, #f0ebe4 100%);
         }
@@ -546,6 +546,9 @@
         .memory-card:nth-child(4) {
             transition-delay: 0.7s;
         }
+        .memory-card:nth-child(5) {
+            transition-delay: 0.9s;
+        }
 
         .memory-card:hover {
             transform: translateY(-15px);
@@ -596,6 +599,60 @@
             color: var(--dark-text);
             margin-bottom: 15px;
             font-family: 'Playfair Display', serif;
+        }
+
+        /* Nueva sección: Mis Fotos Favoritas */
+        .favorites-section {
+            background-color: var(--cream);
+        }
+
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .favorite-item {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 320px;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s ease;
+        }
+
+        .favorite-item:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .favorite-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .favorite-item:hover .favorite-img {
+            transform: scale(1.1);
+        }
+
+        .favorite-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 25px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .favorite-item:hover .favorite-overlay {
+            opacity: 1;
         }
 
         /* Footer */
@@ -760,6 +817,10 @@
                 width: 130px;
                 height: 130px;
             }
+            
+            .favorites-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
@@ -821,6 +882,10 @@
                 width: 100%;
                 max-width: 300px;
             }
+            
+            .favorites-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 480px) {
@@ -868,6 +933,7 @@
                         <li><a href="#nuestra-historia">Nuestra Historia</a></li>
                         <li><a href="#galeria">Galería</a></li>
                         <li><a href="#mensaje">Mensaje</a></li>
+                        <li><a href="#favoritas">Mis Favoritas</a></li>
                         <li><a href="#recuerdos">Recuerdos</a></li>
                     </ul>
                 </nav>
@@ -933,14 +999,15 @@
                         </div>
                     </div>
                 </div>
+                <!-- NUEVO EVENTO CON TU NUEVA IMAGEN -->
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="timeline-date">Mi mayor fortuna</div>
-                        <h3>Tenerte en mi vida</h3>
-                        <p>Eres la persona más increíble que he conocido. Cada día a tu lado me hace sentir el hombre más afortunado del mundo.</p>
+                        <div class="timeline-date">Un momento especial</div>
+                        <h3>Cuando mi corazón latió más fuerte</h3>
+                        <p>Hay momentos contigo que quedan grabados en mi memoria para siempre. Este es uno de esos instantes perfectos.</p>
                         <div class="timeline-photo">
-                            <img src="https://cdn.discordapp.com/attachments/1399170097737891933/1469559724461789411/WhatsApp_Image_2026-02-07_at_2.04.34_AM.jpeg?ex=698819a5&is=6986c825&hm=bd71437267e81c55c824f7602077e1d9bac41c8338ad8d8231cd814e9455ffb9&" alt="Mi amor">
+                            <img src="https://cdn.discordapp.com/attachments/1399170097737891933/1469559768749183101/WhatsApp_Image_2026-02-07_at_2.04.37_AM_1.jpeg?ex=698819af&is=6986c82f&hm=78015e2df66a0487a4b72e134e35cf6bb3b007efabb5d8de2886c9cf9f9e7d81&" alt="Mi amor">
                         </div>
                     </div>
                 </div>
@@ -977,10 +1044,12 @@
                         <p>Cada vez que sonríes, mi corazón se llena de alegría</p>
                     </div>
                 </div>
+                <!-- NUEVA IMAGEN EN GALERÍA -->
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Momento especial 4" class="gallery-img">
+                    <img src="https://cdn.discordapp.com/attachments/1399170097737891933/1469559768749183101/WhatsApp_Image_2026-02-07_at_2.04.37_AM_1.jpeg?ex=698819af&is=6986c82f&hm=78015e2df66a0487a4b72e134e35cf6bb3b007efabb5d8de2886c9cf9f9e7d81&" alt="Mi amor" class="gallery-img">
                     <div class="gallery-overlay">
-                        <h3>Pequeños gestos, grandes significados</h3>
+                        <h3>Instantes de felicidad</h3>
+                        <p>Cada momento contigo es un tesoro invaluable</p>
                     </div>
                 </div>
             </div>
@@ -1004,6 +1073,10 @@
                     <div class="message-image">
                         <img src="https://cdn.discordapp.com/attachments/1399170097737891933/1469559768308908075/WhatsApp_Image_2026-02-07_at_2.04.36_AM.jpeg?ex=698819af&is=6986c82f&hm=325fb90cfe85d7c9a6f8013af9c2435a39d02752a62d0f860557b70419321271&" alt="Mi amor">
                     </div>
+                    <!-- NUEVA IMAGEN EN EL CARRUSEL -->
+                    <div class="message-image">
+                        <img src="https://cdn.discordapp.com/attachments/1399170097737891933/1469559768749183101/WhatsApp_Image_2026-02-07_at_2.04.37_AM_1.jpeg?ex=698819af&is=6986c82f&hm=78015e2df66a0487a4b72e134e35cf6bb3b007efabb5d8de2886c9cf9f9e7d81&" alt="Mi amor">
+                    </div>
                 </div>
                 <p class="message-text">
                     Querida amor mío,<br><br>
@@ -1014,6 +1087,45 @@
                     Te amo hoy, mañana y siempre.
                 </p>
                 <div class="signature">Con todo mi amor</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nueva sección: Mis Fotos Favoritas -->
+    <section class="favorites-section" id="favoritas">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mis Fotos Favoritas de Ti</h2>
+            </div>
+            <div class="favorites-grid">
+                <div class="favorite-item">
+                    <img src="https://cdn.discordapp.com/attachments/1399170097737891933/1469559724461789411/WhatsApp_Image_2026-02-07_at_2.04.34_AM.jpeg?ex=698819a5&is=6986c825&hm=bd71437267e81c55c824f7602077e1d9bac41c8338ad8d8231cd814e9455ffb9&" alt="Mi amor" class="favorite-img">
+                    <div class="favorite-overlay">
+                        <h3>Tu Belleza Natural</h3>
+                        <p>Esta foto captura tu esencia pura y auténtica</p>
+                    </div>
+                </div>
+                <div class="favorite-item">
+                    <img src="https://cdn.discordapp.com/attachments/1399170097737891933/1469559767864442972/WhatsApp_Image_2026-02-07_at_2.04.36_AM_2.jpeg?ex=698819af&is=6986c82f&hm=d1dba6bbaf54304fa77dee4878ee55a46006fdc5394640e69fc013e81631f04c&" alt="Mi amor" class="favorite-img">
+                    <div class="favorite-overlay">
+                        <h3>Tu Mirada Profunda</h3>
+                        <p>Tus ojos dicen más que mil palabras</p>
+                    </div>
+                </div>
+                <div class="favorite-item">
+                    <img src="https://cdn.discordapp.com/attachments/1399170097737891933/1469559768308908075/WhatsApp_Image_2026-02-07_at_2.04.36_AM.jpeg?ex=698819af&is=6986c82f&hm=325fb90cfe85d7c9a6f8013af9c2435a39d02752a62d0f860557b70419321271&" alt="Mi amor" class="favorite-img">
+                    <div class="favorite-overlay">
+                        <h3>Tu Sonrisa Radiante</h3>
+                        <p>La sonrisa que ilumina mis días más oscuros</p>
+                    </div>
+                </div>
+                <div class="favorite-item">
+                    <img src="https://cdn.discordapp.com/attachments/1399170097737891933/1469559768749183101/WhatsApp_Image_2026-02-07_at_2.04.37_AM_1.jpeg?ex=698819af&is=6986c82f&hm=78015e2df66a0487a4b72e134e35cf6bb3b007efabb5d8de2886c9cf9f9e7d81&" alt="Mi amor" class="favorite-img">
+                    <div class="favorite-overlay">
+                        <h3>Tu Encanto Único</h3>
+                        <p>Eres perfecta en cada detalle, en cada expresión</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1067,6 +1179,19 @@
                     <div class="memory-content">
                         <h3>Tu Esencia Brillante</h3>
                         <p>Eres como un diamante, con muchas facetas que brillan de manera única y especial.</p>
+                    </div>
+                </div>
+                <!-- Nueva tarjeta especial con tu nueva foto -->
+                <div class="memory-card special">
+                    <div class="memory-icon">
+                        <img src="https://cdn.discordapp.com/attachments/1399170097737891933/1469559768749183101/WhatsApp_Image_2026-02-07_at_2.04.37_AM_1.jpeg?ex=698819af&is=6986c82f&hm=78015e2df66a0487a4b72e134e35cf6bb3b007efabb5d8de2886c9cf9f9e7d81&" alt="Mi amor" class="memory-icon-bg">
+                        <div class="memory-icon-overlay">
+                            <i class="fas fa-crown" style="font-size: 2.5rem; color: white;"></i>
+                        </div>
+                    </div>
+                    <div class="memory-content">
+                        <h3>Tu Dignidad Real</h3>
+                        <p>Tienes la dignidad de una reina y la ternura de un ángel. Eres simplemente perfecta.</p>
                     </div>
                 </div>
             </div>
@@ -1159,6 +1284,7 @@
         function checkVisibility() {
             const timelineItems = document.querySelectorAll('.timeline-item');
             const memoryCards = document.querySelectorAll('.memory-card');
+            const favoriteItems = document.querySelectorAll('.favorite-item');
             
             timelineItems.forEach(item => {
                 const rect = item.getBoundingClientRect();
@@ -1171,6 +1297,14 @@
                 const rect = card.getBoundingClientRect();
                 if (rect.top < window.innerHeight - 100) {
                     card.classList.add('visible');
+                }
+            });
+            
+            favoriteItems.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
                 }
             });
         }
@@ -1218,6 +1352,13 @@
                     this.style.transform = 'scale(1)';
                 });
             });
+            
+            // Efecto para las fotos favoritas
+            document.querySelectorAll('.favorite-item').forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(30px)';
+                item.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            });
         });
 
         // Efecto de hover en las imágenes de galería
@@ -1241,6 +1382,17 @@
             photo.addEventListener('mouseleave', function() {
                 const img = this.querySelector('img');
                 img.style.transform = 'scale(1)';
+            });
+        });
+        
+        // Efecto para las fotos favoritas
+        document.querySelectorAll('.favorite-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.zIndex = '10';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.zIndex = '1';
             });
         });
     </script>
