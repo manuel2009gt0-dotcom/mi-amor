@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Amor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;500&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --beige: #f9f5f0;
+            --cream: #f7f2e8;
+            --soft-gray: #e8e4de;
+            --taupe: #d8d1c7;
+            --dusty-rose: #d4a8a8;
+            --mauve: #c6a6b3;
+            --sage: #b8c4b8;
+            --soft-text: #5a5a5a;
+            --dark-text: #333333;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--beige);
+            color: var(--soft-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header y navegación */
+        header {
+            background-color: rgba(249, 245, 240, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            backdrop-filter: blur(10px);
+            background-color: rgba(249, 245, 240, 0.85);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            transition: padding 0.3s ease;
+        }
+
+        .logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--dusty-rose);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--soft-text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--dusty-rose);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--dusty-rose);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dusty-rose);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--cream) 0%, #f0ebe4 100%);
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: var(--dusty-rose);
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInDown 1.2s ease forwards 0.5s;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            color: var(--soft-text);
+            opacity: 0;
+            animation: fadeInUp 1.2s ease forwards 0.8s;
+        }
+
+        .heart-icon {
+            color: var(--dusty-rose);
+            font-size: 2rem;
+            margin: 0 10px;
+            animation: heartbeat 1.5s infinite ease-in-out;
+        }
+
+        /* Animaciones de fondo */
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            color: var(--dusty-rose);
+            opacity: 0.3;
+            font-size: 1.5rem;
+            animation: float 15s infinite linear;
+        }
+
+        /* Secciones generales */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--dark-text);
+            display: inline-block;
+            padding-bottom: 15px;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--dusty-rose), var(--sage));
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Sección Nuestra Historia */
+        .story-section {
+            background-color: var(--cream);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--taupe);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 60px;
+            position: relative;
+            width: 45%;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 55%;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-content h3 {
+            color: var(--dusty-rose);
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .timeline-date {
+            display: inline-block;
+            background-color: var(--sage);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            transform: rotate(45deg);
+            right: -10px;
+            top: 25px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            transform: rotate(45deg);
+            left: -10px;
+            top: 25px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--dusty-rose);
+            border-radius: 50%;
+            top: 20px;
+            right: -10px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+            right: auto;
+        }
+
+        /* Sección Galería */
+        .gallery {
+            background-color: var(--beige);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 280px;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Sección Mensaje */
+        .message-section {
+            background: linear-gradient(135deg, var(--cream) 0%, #f0ebe4 100%);
+        }
+
+        .message-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-container::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--dusty-rose), var(--sage));
+            top: 0;
+            left: 0;
+        }
+
+        .message-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+            text-align: justify;
+        }
+
+        .signature {
+            text-align: right;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--dusty-rose);
+            margin-top: 30px;
+        }
+
+        /* Sección Recuerdos */
+        .memories-section {
+            background-color: var(--beige);
+        }
+
+        .memories-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .memory-card {
+            width: 300px;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            transition: transform 0.5s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .memory-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .memory-card:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+        .memory-card:nth-child(2) {
+            transition-delay: 0.3s;
+        }
+        .memory-card:nth-child(3) {
+            transition-delay: 0.5s;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-15px);
+        }
+
+        .memory-icon {
+            background: linear-gradient(135deg, var(--dusty-rose), var(--mauve));
+            color: white;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .memory-content {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .memory-content h3 {
+            color: var(--dark-text);
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--soft-gray);
+            padding: 50px 0 30px;
+            text-align: center;
+        }
+
+        .footer-heart {
+            color: var(--dusty-rose);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            animation: heartbeat 1.5s infinite ease-in-out;
+        }
+
+        .copyright {
+            color: var(--soft-text);
+            font-size: 0.9rem;
+            margin-top: 30px;
+        }
+
+        /* Botones */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--dusty-rose), var(--mauve));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(212, 168, 168, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 168, 168, 0.4);
+        }
+
+        /* Animaciones clave */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+            5% {
+                transform: scale(1.1);
+            }
+            10% {
+                transform: scale(1);
+            }
+            15% {
+                transform: scale(1.1);
+            }
+            20% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 70px;
+            }
+            
+            .timeline-dot {
+                left: 20px !important;
+                right: auto !important;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -10px;
+                right: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(249, 245, 240, 0.98);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            }
+            
+            nav ul.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            nav li {
+                margin: 15px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .message-container {
+                padding: 30px 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header y navegación -->
+    <header id="header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="logo">Para Mi Amor</a>
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul id="nav-menu">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nuestra-historia">Nuestra Historia</a></li>
+                        <li><a href="#galeria">Galería</a></li>
+                        <li><a href="#mensaje">Mensaje</a></li>
+                        <li><a href="#recuerdos">Recuerdos</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección Hero / Inicio -->
+    <section class="hero" id="inicio">
+        <div class="floating-hearts" id="floating-hearts"></div>
+        <div class="hero-content">
+            <h1>Para la persona más especial de mi vida</h1>
+            <p>Cada momento a tu lado es un regalo que atesoro en mi corazón.</p>
+            <div>
+                <i class="fas fa-heart heart-icon"></i>
+                <i class="fas fa-heart heart-icon"></i>
+                <i class="fas fa-heart heart-icon"></i>
+            </div>
+            <a href="#mensaje" class="btn" style="margin-top: 30px;">Leer mi mensaje</a>
+        </div>
+    </section>
+
+    <!-- Sección Nuestra Historia -->
+    <section class="story-section" id="nuestra-historia">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestra Historia</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Primer encuentro</div>
+                        <h3>El día que todo comenzó</h3>
+                        <p>Recuerdo claramente la primera vez que te vi. Tu sonrisa iluminó la habitación y supe que algo especial estaba por comenzar.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Nuestra primera cita</div>
+                        <h3>Una tarde inolvidable</h3>
+                        <p>Pasamos horas hablando sin darnos cuenta del tiempo. Fue entonces cuando supe que quería pasar más momentos así contigo.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">El primer "te quiero"</div>
+                        <h3>Palabras que cambiaron todo</h3>
+                        <p>Nunca olvidaré el momento en que nuestros sentimientos se hicieron palabras. Fue el comienzo de algo hermoso.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Hoy y siempre</div>
+                        <h3>Un futuro juntos</h3>
+                        <p>Cada día a tu lado es una nueva aventura. No puedo esperar para vivir todos los momentos que nos quedan por compartir.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Galería -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <div class="section-title">
+                <h2>Momentos Especiales</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Momento especial 1" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3>Nuestro primer viaje juntos</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Momento especial 2" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3>Celebrando nuestro aniversario</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Momento especial 3" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3>Tardes de risas y complicidad</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Momento especial 4" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3>Pequeños gestos, grandes significados</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Mensaje -->
+    <section class="message-section" id="mensaje">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mi Mensaje para Ti</h2>
+            </div>
+            <div class="message-container">
+                <p class="message-text">
+                    Querida amor mío,<br><br>
+                    No hay palabras suficientes para expresar lo que siento por ti. Eres la luz que ilumina mis días, la calma en medio de la tormenta y la razón por la que mi corazón late con tanta fuerza.<br><br>
+                    Cada momento a tu lado es un tesoro que guardo con cuidado en el cofre de mis recuerdos más preciados. Tu risa es la melodía más hermosa que he escuchado, y tu mirada, el refugio donde encuentro paz.<br><br>
+                    Gracias por ser mi compañera, mi confidente y mi mayor apoyo. Gracias por aceptarme tal como soy, con mis virtudes y mis defectos. Contigo he aprendido que el amor verdadero no se busca, se construye día a día, con pequeños gestos y grandes complicidades.<br><br>
+                    Prometo estar a tu lado en cada paso del camino, celebrar tus éxitos como si fueran míos, y sostenerte en los momentos difíciles. Porque nuestro amor no es perfecto, pero es real, auténtico y único.<br><br>
+                    Te amo hoy, mañana y siempre.
+                </p>
+                <div class="signature">Con todo mi amor</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Recuerdos -->
+    <section class="memories-section" id="recuerdos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lo Que Más Adoro de Ti</h2>
+            </div>
+            <div class="memories-container">
+                <div class="memory-card">
+                    <div class="memory-icon">
+                        <i class="fas fa-laugh-beam"></i>
+                    </div>
+                    <div class="memory-content">
+                        <h3>Tu Risa Contagiosa</h3>
+                        <p>El sonido de tu risa es mi melodía favorita. Tiene el poder de iluminar incluso los días más grises.</p>
+                    </div>
+                </div>
+                <div class="memory-card">
+                    <div class="memory-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="memory-content">
+                        <h3>Tu Bondad Innata</h3>
+                        <p>Tu capacidad para ver lo bueno en los demás y tu corazón generoso son cualidades que admiro profundamente.</p>
+                    </div>
+                </div>
+                <div class="memory-card">
+                    <div class="memory-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="memory-content">
+                        <h3>Tu Forma de Ser</h3>
+                        <p>Amo cada detalle de tu personalidad, esa combinación única que te hace ser tú y nadie más.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-heart">
+                <i class="fas fa-heart"></i>
+            </div>
+            <p>Este sitio fue creado con todo mi cariño para ti, la persona más especial de mi vida.</p>
+            <p>Cada día a tu lado es un regalo que valoro más que cualquier tesoro.</p>
+            <div class="copyright">
+                <p>Hecho con <i class="fas fa-heart" style="color: var(--dusty-rose);"></i> para mi amor eterno</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Crear corazones flotantes
+        function createFloatingHearts() {
+            const container = document.getElementById('floating-hearts');
+            const heartCount = 15;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '<i class="fas fa-heart"></i>';
+                
+                // Posición aleatoria
+                const left = Math.random() * 100;
+                const delay = Math.random() * 15;
+                const size = Math.random() * 20 + 10;
+                
+                heart.style.left = `${left}%`;
+                heart.style.fontSize = `${size}px`;
+                heart.style.animationDelay = `${delay}s`;
+                
+                // Color aleatorio entre tonos neutros
+                const colors = ['#d4a8a8', '#c6a6b3', '#b8c4b8', '#d8d1c7'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                heart.style.color = color;
+                
+                container.appendChild(heart);
+            }
+        }
+
+        // Efecto de scroll en el header
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Menú móvil
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+            
+            // Cambiar icono del botón
+            const icon = this.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                const navMenu = document.getElementById('nav-menu');
+                const menuBtn = document.getElementById('mobile-menu-btn');
+                const icon = menuBtn.querySelector('i');
+                
+                navMenu.classList.remove('active');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Animación de aparición de elementos al hacer scroll
+        function checkVisibility() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const memoryCards = document.querySelectorAll('.memory-card');
+            
+            timelineItems.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    item.classList.add('visible');
+                }
+            });
+            
+            memoryCards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    card.classList.add('visible');
+                }
+            });
+        }
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            createFloatingHearts();
+            checkVisibility();
+            
+            // Verificar visibilidad al hacer scroll
+            window.addEventListener('scroll', checkVisibility);
+            
+            // Efecto de escritura en el título (opcional)
+            const heroTitle = document.querySelector('.hero h1');
+            const originalText = heroTitle.textContent;
+            heroTitle.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    heroTitle.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            }
+            
+            // Iniciar efecto de escritura después de un breve retraso
+            setTimeout(typeWriter, 1500);
+        });
+
+        // Efecto de hover en las imágenes de galería
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.zIndex = '10';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.zIndex = '1';
+            });
+        });
+    </script>
+</body>
+</html>
