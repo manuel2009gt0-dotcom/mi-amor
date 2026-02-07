@@ -127,7 +127,7 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
+        /* Hero Section - Actualizado con tu foto */
         .hero {
             height: 100vh;
             display: flex;
@@ -141,8 +141,35 @@
 
         .hero-content {
             z-index: 2;
-            max-width: 800px;
+            max-width: 900px;
             padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-image-container {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards 1s;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .hero-image-container:hover .hero-image {
+            transform: scale(1.05);
         }
 
         .hero h1 {
@@ -160,6 +187,7 @@
             color: var(--soft-text);
             opacity: 0;
             animation: fadeInUp 1.2s ease forwards 0.8s;
+            max-width: 600px;
         }
 
         .heart-icon {
@@ -330,7 +358,7 @@
             right: auto;
         }
 
-        /* Sección Galería */
+        /* Sección Galería - Actualizada con tu foto */
         .gallery {
             background-color: var(--beige);
         }
@@ -383,13 +411,13 @@
             transform: translateY(0);
         }
 
-        /* Sección Mensaje */
+        /* Sección Mensaje - Actualizada con tu foto */
         .message-section {
             background: linear-gradient(135deg, var(--cream) 0%, #f0ebe4 100%);
         }
 
         .message-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             background-color: white;
             padding: 50px;
@@ -397,6 +425,9 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .message-container::before {
@@ -409,12 +440,29 @@
             left: 0;
         }
 
+        .message-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid var(--dusty-rose);
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(212, 168, 168, 0.3);
+        }
+
+        .message-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .message-text {
             font-size: 1.2rem;
             line-height: 1.8;
             margin-bottom: 30px;
             font-family: 'Playfair Display', serif;
             text-align: justify;
+            width: 100%;
         }
 
         .signature {
@@ -423,9 +471,10 @@
             font-size: 2.5rem;
             color: var(--dusty-rose);
             margin-top: 30px;
+            width: 100%;
         }
 
-        /* Sección Recuerdos */
+        /* Sección Recuerdos - Actualizada con tu foto */
         .memories-section {
             background-color: var(--beige);
         }
@@ -475,6 +524,32 @@
             align-items: center;
             justify-content: center;
             font-size: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Agregar tu imagen en el fondo de una tarjeta de recuerdos */
+        .memory-card.special .memory-icon {
+            background: none;
+        }
+
+        .memory-icon-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        .memory-icon-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(212, 168, 168, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .memory-content {
@@ -526,6 +601,28 @@
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(212, 168, 168, 0.4);
+        }
+
+        /* Nuevas animaciones */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-15px) rotate(2deg);
+            }
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
         }
 
         /* Animaciones clave */
@@ -615,6 +712,10 @@
                 left: -10px;
                 right: auto;
             }
+            
+            .message-container {
+                padding: 40px 30px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -650,12 +751,37 @@
                 font-size: 2.8rem;
             }
             
+            .hero-image-container {
+                width: 180px;
+                height: 180px;
+            }
+            
             .message-container {
                 padding: 30px 20px;
             }
             
             .section-title h2 {
                 font-size: 2.2rem;
+            }
+            
+            .message-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-image-container {
+                width: 150px;
+                height: 150px;
             }
         }
     </style>
@@ -682,12 +808,15 @@
         </div>
     </header>
 
-    <!-- Sección Hero / Inicio -->
+    <!-- Sección Hero / Inicio - CON TU FOTO -->
     <section class="hero" id="inicio">
         <div class="floating-hearts" id="floating-hearts"></div>
         <div class="hero-content">
+            <div class="hero-image-container">
+                <img src="https://cdn.discordapp.com/attachments/1399170097737891933/1469559724461789411/WhatsApp_Image_2026-02-07_at_2.04.34_AM.jpeg?ex=698819a5&is=6986c825&hm=bd71437267e81c55c824f7602077e1d9bac41c8338ad8d8231cd814e9455ffb9&" alt="Mi amor" class="hero-image">
+            </div>
             <h1>Para la persona más especial de mi vida</h1>
-            <p>Cada momento a tu lado es un regalo que atesoro en mi corazón.</p>
+            <p>Cada momento a tu lado es un regalo que atesoro en mi corazón. Eres la razón por la que mis días tienen color y mis noches tienen paz.</p>
             <div>
                 <i class="fas fa-heart heart-icon"></i>
                 <i class="fas fa-heart heart-icon"></i>
@@ -728,29 +857,35 @@
                         <p>Nunca olvidaré el momento en que nuestros sentimientos se hicieron palabras. Fue el comienzo de algo hermoso.</p>
                     </div>
                 </div>
+                <!-- Nuevo evento con tu foto -->
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="timeline-date">Hoy y siempre</div>
-                        <h3>Un futuro juntos</h3>
-                        <p>Cada día a tu lado es una nueva aventura. No puedo esperar para vivir todos los momentos que nos quedan por compartir.</p>
+                        <div class="timeline-date">Mi mayor fortuna</div>
+                        <h3>Tenerte en mi vida</h3>
+                        <p>Eres la persona más increíble que he conocido. Cada día a tu lado me hace sentir el hombre más afortunado del mundo.</p>
+                        <div style="margin-top: 15px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                            <img src="https://cdn.discordapp.com/attachments/1399170097737891933/1469559724461789411/WhatsApp_Image_2026-02-07_at_2.04.34_AM.jpeg?ex=698819a5&is=6986c825&hm=bd71437267e81c55c824f7602077e1d9bac41c8338ad8d8231cd814e9455ffb9&" alt="Mi amor" style="width:100%; height:180px; object-fit:cover;">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección Galería -->
+    <!-- Sección Galería - CON TU FOTO COMO PRIMERA IMAGEN -->
     <section class="gallery" id="galeria">
         <div class="container">
             <div class="section-title">
                 <h2>Momentos Especiales</h2>
             </div>
             <div class="gallery-grid">
+                <!-- TU FOTO como primera imagen -->
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Momento especial 1" class="gallery-img">
+                    <img src="https://cdn.discordapp.com/attachments/1399170097737891933/1469559724461789411/WhatsApp_Image_2026-02-07_at_2.04.34_AM.jpeg?ex=698819a5&is=6986c825&hm=bd71437267e81c55c824f7602077e1d9bac41c8338ad8d8231cd814e9455ffb9&" alt="Mi amor" class="gallery-img">
                     <div class="gallery-overlay">
-                        <h3>Nuestro primer viaje juntos</h3>
+                        <h3>Mi razón para sonreír</h3>
+                        <p>La persona más hermosa que conozco</p>
                     </div>
                 </div>
                 <div class="gallery-item">
@@ -775,13 +910,16 @@
         </div>
     </section>
 
-    <!-- Sección Mensaje -->
+    <!-- Sección Mensaje - CON TU FOTO -->
     <section class="message-section" id="mensaje">
         <div class="container">
             <div class="section-title">
                 <h2>Mi Mensaje para Ti</h2>
             </div>
             <div class="message-container">
+                <div class="message-image">
+                    <img src="https://cdn.discordapp.com/attachments/1399170097737891933/1469559724461789411/WhatsApp_Image_2026-02-07_at_2.04.34_AM.jpeg?ex=698819a5&is=6986c825&hm=bd71437267e81c55c824f7602077e1d9bac41c8338ad8d8231cd814e9455ffb9&" alt="Mi amor">
+                </div>
                 <p class="message-text">
                     Querida amor mío,<br><br>
                     No hay palabras suficientes para expresar lo que siento por ti. Eres la luz que ilumina mis días, la calma en medio de la tormenta y la razón por la que mi corazón late con tanta fuerza.<br><br>
@@ -795,7 +933,7 @@
         </div>
     </section>
 
-    <!-- Sección Recuerdos -->
+    <!-- Sección Recuerdos - CON TU FOTO EN UNA TARJETA ESPECIAL -->
     <section class="memories-section" id="recuerdos">
         <div class="container">
             <div class="section-title">
@@ -811,13 +949,17 @@
                         <p>El sonido de tu risa es mi melodía favorita. Tiene el poder de iluminar incluso los días más grises.</p>
                     </div>
                 </div>
-                <div class="memory-card">
+                <!-- Tarjeta especial con tu foto -->
+                <div class="memory-card special">
                     <div class="memory-icon">
-                        <i class="fas fa-heart"></i>
+                        <img src="https://cdn.discordapp.com/attachments/1399170097737891933/1469559724461789411/WhatsApp_Image_2026-02-07_at_2.04.34_AM.jpeg?ex=698819a5&is=6986c825&hm=bd71437267e81c55c824f7602077e1d9bac41c8338ad8d8231cd814e9455ffb9&" alt="Mi amor" class="memory-icon-bg">
+                        <div class="memory-icon-overlay">
+                            <i class="fas fa-heart" style="font-size: 2.5rem; color: white;"></i>
+                        </div>
                     </div>
                     <div class="memory-content">
-                        <h3>Tu Bondad Innata</h3>
-                        <p>Tu capacidad para ver lo bueno en los demás y tu corazón generoso son cualidades que admiro profundamente.</p>
+                        <h3>Tu Esencia Única</h3>
+                        <p>Eres perfectamente tú, con esa combinación única de cualidades que hacen que seas la persona especial que eres.</p>
                     </div>
                 </div>
                 <div class="memory-card">
@@ -959,6 +1101,14 @@
             
             // Iniciar efecto de escritura después de un breve retraso
             setTimeout(typeWriter, 1500);
+            
+            // Efecto de flotación para la imagen del héroe
+            const heroImage = document.querySelector('.hero-image-container');
+            if (heroImage) {
+                setInterval(() => {
+                    heroImage.style.animation = 'float 6s ease-in-out infinite';
+                }, 100);
+            }
         });
 
         // Efecto de hover en las imágenes de galería
